@@ -1,0 +1,26 @@
+After build any node in c++, alter the below changes in the package.xml and CmakeList
+
+ Package.xml
+
+1. Add <build_depend> --add package
+2. Add <run_depend>
+
+
+CmakeList
+1. find_package(catkin REQUIRED COMPONENTS
+   --add package
+      )
+
+2.  catkin_package(
+     CATKIN_DEPEND
+     --add package
+      )
+
+3. add_executable(name_of_node  file_location ex:src/file_name)
+
+4. target_link_libraries(name_of_node
+         ${catkin_LIBRARIES}
+      )
+
+(Optional) 5. add_dependencies(name_of_node
+                      name_of_node_generate_messages_cpp) 
