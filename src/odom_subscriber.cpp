@@ -22,20 +22,19 @@ int main(int argc, char** argv)
 
 */
 
-#include <ros/ros.h>
-#include <nav_msgs/Odometry.h>
+#include<ros/ros.h>
+#include<nav_msgs/Odometry.h>
 
 
 void OdomCallback(const nav_msgs::Odometry::ConstPtr& msg)
 {
 	double linear_x = msg->pose.pose.position.x;
 	double angular_z = msg->pose.pose.orientation.z;
-	ROS_INFO=("linear_x= %f, angular_z= %f", linear_x, angular_z);
+	ROS_INFO("linear_x = %f", "angular_z = %f", linear_x, angular_z);
 }
 
-int main(int argc, char** argv)
-{
-	ros::init(argc, argv, "location_inform")
+int main(int argc, char** argv){
+	ros::init(argc, argv, "location_info");
 	ros::NodeHandle nh;
 	ros::Subscriber sub = nh.subscribe("odom", 10, OdomCallback);
 	ros::spin();
