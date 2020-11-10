@@ -24,3 +24,25 @@ CmakeList
 
 (Optional) 5. add_dependencies(name_of_node
                       name_of_node_generate_messages_cpp) 
+
+
+
+
+*********************WORKING CMAKELIST*****************************
+
+cmake_minimum_required(VERSION 3.0.2)
+project(test_pkg)
+#add_compile_options(-std=c++11)
+
+find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  std_msgs
+)
+
+include_directories(
+  ${catkin_INCLUDE_DIRS}
+)
+
+add_executable(subscriber_node src/subscriber.cpp)
+
+target_link_libraries(subscriber_node ${catkin_LIBRARIES})
